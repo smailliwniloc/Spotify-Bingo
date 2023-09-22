@@ -10,7 +10,9 @@ function PageLayout({children}: PageLayoutProps) {
     return (
         <>
             <Header/>
-            {children}
+            <div style={{padding: '64px 15vw'}}>
+                {children}
+            </div>
             <Footer/>
         </>
     )

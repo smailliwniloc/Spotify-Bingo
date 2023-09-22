@@ -4,7 +4,7 @@ import PageLayout from '../components/PageLayout'
 function Home() {
     return (
         <PageLayout>
-            <div>
+            <div style={{height: '200vh'}}>
                 Hello
             </div>
         </PageLayout>
