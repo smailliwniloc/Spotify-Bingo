@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom';
 function SidebarContent() {
     const links = [
         {URL: '/', title: "Home", logo: FaHome},
-        {URL: '/blog', title: "Blog", logo: FaNewspaper},
+        {URL: '/new-game', title: "New Game", logo: FaNewspaper},
         {URL: '/about-us', title: "About Us", logo: FaAddressBook},
         {URL: '/FAQ', title: "FAQ", logo: FaQuestionCircle},
     ]

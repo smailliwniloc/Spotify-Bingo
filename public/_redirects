@@ -1,0 +1,5 @@
+# function api
+/api/* /.netlify/functions/:splat 200
+
+# catch all redirect
+/* /index.html 200

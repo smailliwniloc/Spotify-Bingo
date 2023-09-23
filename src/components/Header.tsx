@@ -133,8 +133,8 @@ const PageHeader = () => {
                 <NavLink to='/'>
                     SB
                 </NavLink>
-                <NavLink to='/blog'>
-                    Blog
+                <NavLink to='/new-game'>
+                    New Game
                 </NavLink>
                 <NavLink to='/about-us'>
                     About Us

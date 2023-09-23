@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
+import Generator from './pages/Generator';
 
 function ScrollToTop() {
   const location = useLocation();
@@ -18,6 +19,7 @@ function App() {
       <ScrollToTop/>
       <Routes>
         <Route path='/' element={<Home/>}/>
+        <Route path='/new-game' element={<Generator/>}/>
       </Routes>
     </Router>
   );
