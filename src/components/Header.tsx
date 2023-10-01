@@ -1,49 +1,49 @@
-import React from 'react';
-import Sidebar from './Sidebar'
-import { FaBars } from 'react-icons/fa';
-import { NavLink } from 'react-router-dom';
-import { Box } from '@mui/material';
-import {styled} from '@mui/material/styles'
-import { BLACK, GREEN } from '../constants/COLORS';
+import React from "react";
+import Sidebar from "./Sidebar";
+import { FaBars } from "react-icons/fa";
+import { NavLink } from "react-router-dom";
+import { Box } from "@mui/material";
+import { styled } from "@mui/material/styles";
+import { BLACK, GREEN } from "../constants/COLORS";
 
-const headerHeight = 120
-const heroProportion = 0.4
+const headerHeight = 120;
+const heroProportion = 0.4;
 
 const styles = {
-    header: {
-        height: `${heroProportion * 100}vh`,
-        position: 'relative',
-        width: '100%'
-    },
+  header: {
+    height: `${heroProportion * 100}vh`,
+    position: "relative",
+    width: "100%",
+  },
   nav: {
-    position: 'fixed',
+    position: "fixed",
     height: `${headerHeight}px`,
-    width: '100%',
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    boxSizing: 'border-box',
-    padding: '0 32px',
+    width: "100%",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    boxSizing: "border-box",
+    padding: "0 32px",
     zIndex: 12,
     "& button": {
-      color: 'white', 
-      border: '1px solid white'
-    }
+      color: "white",
+      border: "1px solid white",
+    },
   },
   image: {
     top: 0,
     left: 0,
-    position: 'relative',
-    width: '100%',
+    position: "relative",
+    width: "100%",
     "& img": {
-      objectFit: 'cover',
-      objectPosition: 'center',
-      height: '70vh',
-      width: '100%',
+      objectFit: "cover",
+      objectPosition: "center",
+      height: "70vh",
+      width: "100%",
       "@media screen and (max-width: 600px)": {
-        height: '40vh'
+        height: "40vh",
       },
-    }
+    },
   },
   bars: {
     display: "none",
@@ -52,7 +52,7 @@ const styles = {
       display: "block",
       fontSize: "1.8rem",
       cursor: "pointer",
-    }
+    },
   },
   navMenu: {
     display: "flex",
@@ -66,94 +66,90 @@ const styles = {
       height: "100%",
       cursor: "pointer",
       "&.active": {
-        color: "#808080"
+        color: "#808080",
       },
       "&:hover": {
-        color: "#808080"
+        color: "#808080",
       },
       "&:not(:first-of-type)": {
         "@media screen and (max-width: 600px)": {
-          display: "none"
+          display: "none",
         },
-      }
+      },
     },
   },
   finalSection: {
-    display: 'flex', 
-    justifyContent: 'end', 
-    alignItems: 'center', 
+    display: "flex",
+    justifyContent: "end",
+    alignItems: "center",
     "@media screen and (max-width: 900px)": {
-      display: "none"
+      display: "none",
     },
   },
   hero: {
-    position: 'absolute',
+    position: "absolute",
     top: 0,
     left: 0,
-    width: '100%',
+    width: "100%",
     height: `${heroProportion * 100}vh`,
     background: `linear-gradient(90deg, ${BLACK.hex}, ${GREEN.hex})`,
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    color: 'white'
-  }
-}
-  
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    color: "white",
+  },
+};
+
 const PageHeader = () => {
-
-  const [sidebarOpen, setSidebarOpen] = React.useState(false)
+  const [sidebarOpen, setSidebarOpen] = React.useState(false);
   const handleDrawerToggle = () => {
-    setSidebarOpen(!sidebarOpen)
-  }
+    setSidebarOpen(!sidebarOpen);
+  };
 
-  const pageHeight = window.innerHeight
+  const pageHeight = window.innerHeight;
 
   const [scrollPosition, setScrollPosition] = React.useState(0);
   const handleScroll = () => {
-      const position = window.scrollY;
-      setScrollPosition(position);
+    const position = window.scrollY;
+    setScrollPosition(position);
   };
 
   React.useEffect(() => {
-      window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
-      return () => {
-          window.removeEventListener('scroll', handleScroll);
-      };
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
-  const StyledBars = styled(FaBars)(styles.bars)
-  const background = (scrollPosition + headerHeight)/pageHeight < heroProportion ? 'transparent' : `linear-gradient(90deg, ${BLACK.hex}, ${GREEN.hex})`
+  const StyledBars = styled(FaBars)(styles.bars);
+  const background =
+    (scrollPosition + headerHeight) / pageHeight < heroProportion
+      ? "transparent"
+      : `linear-gradient(90deg, ${BLACK.hex}, ${GREEN.hex})`;
 
   return (
     <Box component="header" sx={styles.header}>
-        <Box component="nav" sx={styles.nav} style={{background: background}}>  
-            <Box component="div" sx={styles.navMenu}>
-                <NavLink to='/'>
-                    SB
-                </NavLink>
-                <NavLink to='/new-game'>
-                    New Game
-                </NavLink>
-                <NavLink to='/about-us'>
-                    About Us
-                </NavLink>
-                <NavLink to='/FAQ'>
-                    FAQ
-                </NavLink>
-            </Box>
-            <Box component="div" sx={styles.finalSection}>
-            <a href={"/"} target="_blank" rel="noreferrer"><button>Book Now</button></a>
-            </Box>
-            <StyledBars onClick={handleDrawerToggle}/>
-            <Sidebar isOpen={sidebarOpen} handleDrawerToggle={handleDrawerToggle}/>
+      <Box component="nav" sx={styles.nav} style={{ background: background }}>
+        <Box component="div" sx={styles.navMenu}>
+          <NavLink to="/">SB</NavLink>
+          <NavLink to="/new-game">New Game</NavLink>
+          <NavLink to="/about-us">About Us</NavLink>
+          <NavLink to="/FAQ">FAQ</NavLink>
         </Box>
-        <Box component="div" sx={styles.hero}>
-            <h1>Spotify Bingo Generator</h1>
+        <Box component="div" sx={styles.finalSection}>
+          <a href={"/"} target="_blank" rel="noreferrer">
+            <button>Book Now</button>
+          </a>
         </Box>
+        <StyledBars onClick={handleDrawerToggle} />
+        <Sidebar isOpen={sidebarOpen} handleDrawerToggle={handleDrawerToggle} />
+      </Box>
+      <Box component="div" sx={styles.hero}>
+        <h1>Spotify Bingo Generator</h1>
+      </Box>
     </Box>
   );
 };
-  
+
 export default PageHeader;

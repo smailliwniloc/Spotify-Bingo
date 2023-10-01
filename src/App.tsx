@@ -1,14 +1,19 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import Home from './pages/Home';
-import Generator from './pages/Generator';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
+import Home from "./pages/Home";
+import Generator from "./pages/Generator";
 
 function ScrollToTop() {
   const location = useLocation();
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
-  }, [location])
+  }, [location]);
 
   return null;
 }
@@ -16,10 +21,10 @@ function ScrollToTop() {
 function App() {
   return (
     <Router>
-      <ScrollToTop/>
+      <ScrollToTop />
       <Routes>
-        <Route path='/' element={<Home/>}/>
-        <Route path='/new-game' element={<Generator/>}/>
+        <Route path="/" element={<Home />} />
+        <Route path="/new-game" element={<Generator />} />
       </Routes>
     </Router>
   );
