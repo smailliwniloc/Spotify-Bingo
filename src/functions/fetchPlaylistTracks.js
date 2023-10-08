@@ -1,15 +1,15 @@
-const axios = require("axios");
+const axios = require('axios');
 
 exports.handler = async (event) => {
-  const { token, playlistID } = JSON.parse(event.body);
+  const {token, playlistID} = JSON.parse(event.body);
 
   try {
     if (!token) {
-      throw new Error("No token provided");
+      throw new Error('No token provided');
     }
 
     const response = await axios({
-      method: "get",
+      method: 'get',
       url: `https://api.spotify.com/v1/playlists/${playlistID}/tracks`,
       headers: {
         Authorization: `Bearer ${token}`,

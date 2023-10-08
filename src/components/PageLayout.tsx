@@ -1,16 +1,16 @@
-import React from "react";
-import Header from "./Header";
-import Footer from "./Footer";
+import React from 'react';
+import Header from './Header';
+import Footer from './Footer';
 
 type PageLayoutProps = {
   children: React.ReactElement;
 };
 
-function PageLayout({ children }: PageLayoutProps) {
+function PageLayout({children}: PageLayoutProps) {
   return (
     <>
       <Header />
-      <div style={{ padding: "64px 15vw" }}>{children}</div>
+      <div style={{padding: '64px 15vw'}}>{children}</div>
       <Footer />
     </>
   );

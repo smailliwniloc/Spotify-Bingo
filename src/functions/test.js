@@ -1,4 +1,4 @@
-const { SPOTIFY_CLIENT_ID } = require("../environmentVars");
+const {SPOTIFY_CLIENT_ID} = require('../environmentVars');
 
 exports.handler = async () => {
   try {
