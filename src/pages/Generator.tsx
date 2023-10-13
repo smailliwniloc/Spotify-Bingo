@@ -62,7 +62,7 @@ function Generator() {
     <PageLayout>
       <Grid container={true}>
         <Grid item={true} xs={4}>
-          Step 1
+          {'Step 1 :)'}
         </Grid>
         <Grid item={true} xs={8}>
           <button onClick={auth}>Log In To Spotify</button>
