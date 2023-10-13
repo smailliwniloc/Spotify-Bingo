@@ -1,6 +1,6 @@
 import {SCOPES} from '../constants/SPOTIFY_SCOPES';
 
-const {SPOTIFY_CLIENT_ID} = require('../environmentVars');
+const {SPOTIFY_CLIENT_ID, SPOTIFY_REDIRECT_URI} = require('../environmentVars');
 
 function generateRandomString(length) {
   var result = '';
@@ -12,7 +12,7 @@ function generateRandomString(length) {
   return result;
 }
 
-const redirectUri = 'http://localhost:8888/new-game';
+const redirectUri = SPOTIFY_REDIRECT_URI;
 
 const codeVerifier = generateRandomString(128);
 
