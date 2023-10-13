@@ -14,6 +14,8 @@ exports.handler = async (event) => {
       redirect_uri: SPOTIFY_REDIRECT_URI,
     });
 
+    console.log(body);
+
     const {data} = await axios.post(
       'https://accounts.spotify.com/api/token',
       body,
