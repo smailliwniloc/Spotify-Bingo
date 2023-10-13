@@ -5,6 +5,7 @@ import {API_ROUTE} from '../constants/ROUTES';
 
 function PrintableCards() {
   const [tracks, setTracks] = React.useState<any[]>([]);
+  const title = 'Bingo Beats';
 
   const location = useLocation();
 
@@ -18,6 +19,8 @@ function PrintableCards() {
       if (!data.items) {
         return;
       }
+
+      console.log(data);
 
       const songs = data.items.map((track: any) => track.track.name);
 
@@ -87,7 +90,7 @@ function PrintableCards() {
       {cards.map((_, i) => (
         <div key={i}>
           <h1 className="Singo-title">
-            <u>Baby Singo</u>
+            <u>{title}</u>
           </h1>
 
           <div className="Top-Singo">
