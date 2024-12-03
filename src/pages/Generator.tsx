@@ -1,8 +1,8 @@
 import React from 'react';
 import axios from 'axios';
-import {useLocation} from 'react-router-dom';
+// import {useLocation} from 'react-router-dom';
 import PageLayout from '../components/PageLayout';
-import {API_ROUTE} from '../constants/ROUTES';
+// import {API_ROUTE} from '../constants/ROUTES';
 import {Grid} from '@mui/material';
 import auth from '../utils/spotifyAuth';
 import PlaylistCard from '../components/PlaylistCard';
@@ -14,31 +14,31 @@ function Generator() {
   const [playlists, setPlaylists] = React.useState<any[]>([]);
   const [selectedPlaylist, setSelectedPlaylist] = React.useState<string>('');
 
-  const getProfile = async (code: string) => {
-    const codeVerifier = localStorage.getItem('code_verifier');
-    const {data: tokenData} = await axios.post(
-      `${API_ROUTE}/requestSpotifyAccess`,
-      {
-        code: code,
-        codeVerifier: codeVerifier,
-      }
-    );
-    setToken(tokenData);
-    const {data: profileData} = await axios.post(
-      `${API_ROUTE}/getCurrentProfile`,
-      {
-        token: tokenData,
-      }
-    );
-    const {data: playlistData} = await axios.post(
-      `${API_ROUTE}/fetchUserPlaylists`,
-      {
-        token: tokenData,
-        userID: profileData.id,
-      }
-    );
-    setPlaylists(playlistData.items);
-  };
+  // const getProfile = async (code: string) => {
+  //   const codeVerifier = localStorage.getItem('code_verifier');
+  //   const {data: tokenData} = await axios.post(
+  //     `${API_ROUTE}/requestSpotifyAccess`,
+  //     {
+  //       code: code,
+  //       codeVerifier: codeVerifier,
+  //     }
+  //   );
+  //   setToken(tokenData);
+  //   const {data: profileData} = await axios.post(
+  //     `${API_ROUTE}/getCurrentProfile`,
+  //     {
+  //       token: tokenData,
+  //     }
+  //   );
+  //   const {data: playlistData} = await axios.post(
+  //     `${API_ROUTE}/fetchUserPlaylists`,
+  //     {
+  //       token: tokenData,
+  //       userID: profileData.id,
+  //     }
+  //   );
+  //   setPlaylists(playlistData.items);
+  // };
 
   const getPlaylistTracks = async (playlistID: string) => {
     setSelectedPlaylist(playlistID);
