@@ -30,7 +30,7 @@ code {
 
 .Singo-board1 td {
   border-style: solid;
-  border-color: lightblue;
+  border-color: red;
   width: 80px;
   max-width: 80px;
   height: 80px;

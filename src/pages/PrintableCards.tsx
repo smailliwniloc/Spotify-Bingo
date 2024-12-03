@@ -5,15 +5,18 @@ import {API_ROUTE} from '../constants/ROUTES';
 
 function PrintableCards() {
   const [tracks, setTracks] = React.useState<any[]>([]);
-  const title = 'Bingo Beats';
+  const title = 'A SINGO Christmas';
 
   const location = useLocation();
 
   const fetchPlaylistTracks = React.useCallback(
     async (token: string | null, playlistID: string | null) => {
-      const {data} = await axios.post(`${API_ROUTE}/fetchPlaylistTracks`, {
-        token: token,
-        playlistID: playlistID,
+      const {data} = await axios({
+        method: 'get',
+        url: `https://api.spotify.com/v1/playlists/${playlistID}/tracks`,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
 
       if (!data.items) {
@@ -83,7 +86,9 @@ function PrintableCards() {
     );
   };
 
-  const cards = [...Array(20)];
+  const cards = [...Array(30)];
+
+  console.log(tracks);
 
   return (
     <>
