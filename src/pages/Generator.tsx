@@ -3,7 +3,7 @@ import axios from 'axios';
 // import {useLocation} from 'react-router-dom';
 import PageLayout from '../components/PageLayout';
 // import {API_ROUTE} from '../constants/ROUTES';
-import {Grid} from '@mui/material';
+import {Divider, Grid, TextField} from '@mui/material';
 import auth from '../utils/spotifyAuth';
 import PlaylistCard from '../components/PlaylistCard';
 import { SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET, SPOTIFY_REDIRECT_URI } from '../environmentVars';
@@ -13,6 +13,7 @@ function Generator() {
   const [token, setToken] = React.useState<string>('');
   const [playlists, setPlaylists] = React.useState<any[]>([]);
   const [selectedPlaylist, setSelectedPlaylist] = React.useState<string>('');
+  const [numberOfCards, setNumberOfCards] = React.useState<number>(30);
 
   // const getProfile = async (code: string) => {
   //   const codeVerifier = localStorage.getItem('code_verifier');
@@ -43,6 +44,10 @@ function Generator() {
   const getPlaylistTracks = async (playlistID: string) => {
     setSelectedPlaylist(playlistID);
   };
+
+  const onNumberChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setNumberOfCards(Number(event.target.value))
+  }
 
   // const location = useLocation();
 
@@ -118,15 +123,22 @@ function Generator() {
     <PageLayout>
       <Grid container={true}>
         <Grid item={true} xs={4}>
-          {'Step 1 :)'}
+          Step 1
         </Grid>
         <Grid item={true} xs={8}>
           <button onClick={auth}>Log In To Spotify</button>
+          {(new URLSearchParams(window.location.search)).get('code') ? <span>Already logged in</span> : null}
         </Grid>
+        <Divider style={{width: '100%'}}/>
         <Grid item={true} xs={4}>
           Step 2
-          <button onClick={requestAccess}>RequestAccess</button>
-          {token ?? 'wait'}
+        </Grid>
+        <Grid item={true} xs={8}>
+          <button onClick={requestAccess}>Get All Playlists</button>
+        </Grid>
+        <Divider style={{width: '100%'}}/>
+        <Grid item={true} xs={4}>
+          Step 3
         </Grid>
         <Grid
           item={true}
@@ -153,19 +165,23 @@ function Generator() {
 })}
           </div>
         </Grid>
+        <Divider style={{width: '100%'}}/>
         <Grid item={true} xs={4}>
-          Step 3
+          Step 4
         </Grid>
-        <Grid item={true} xs={12}>
+        <Grid item={true} xs={8}>
+          <TextField onChange={onNumberChange} type='number' value={numberOfCards} label="Number of Cards" sx={{marginTop: '8px'}}/>
+        </Grid>
+        {!!token && !!selectedPlaylist ? <Grid item={true} xs={12}>
           Print the cards
           <button onClick={printCards}>Print Cards</button>
           <iframe
             title="Printable Cards"
             name="printable_cards"
-            src={`/printable-cards?token=${token}&playlistID=${selectedPlaylist}`}
+            src={`/printable-cards?token=${token}&playlistID=${selectedPlaylist}&amount=${numberOfCards}`}
             style={{height: '100vh', width: '100%'}}
           />
-        </Grid>
+        </Grid> : null}
       </Grid>
     </PageLayout>
   );

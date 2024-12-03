@@ -5,6 +5,7 @@ import {useLocation} from 'react-router-dom';
 
 function PrintableCards() {
   const [tracks, setTracks] = React.useState<any[]>([]);
+  const [count, setCount] = React.useState<number | null>(null);
   const title = 'A SINGO Christmas';
 
   const location = useLocation();
@@ -53,6 +54,8 @@ function PrintableCards() {
     const URLParams = new URLSearchParams(window.location.search);
     const token = URLParams.get('token');
     const playlistID = URLParams.get('playlistID');
+    const amount = Number(URLParams.get('amount'));
+    setCount(amount);
     fetchPlaylistTracks(token, playlistID);
   }, [location, fetchPlaylistTracks]);
 
@@ -86,7 +89,7 @@ function PrintableCards() {
     );
   };
 
-  const cards = [...Array(30)];
+  const cards = [...Array(count)];
 
   console.log(tracks);
 
