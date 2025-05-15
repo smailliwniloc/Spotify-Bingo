@@ -6,7 +6,7 @@ import {useLocation} from 'react-router-dom';
 function PrintableCards() {
   const [tracks, setTracks] = React.useState<any[]>([]);
   const [count, setCount] = React.useState<number | null>(null);
-  const title = 'A SINGO Christmas';
+  const title = 'Graduation Singo';
 
   const location = useLocation();
 
