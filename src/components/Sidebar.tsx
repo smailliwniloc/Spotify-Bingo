@@ -9,17 +9,13 @@ import {
 import {
   FaHome,
   FaNewspaper,
-  FaAddressBook,
-  FaQuestionCircle,
 } from 'react-icons/fa';
 import {NavLink} from 'react-router-dom';
 
-function SidebarContent() {
+function SidebarContent(): React.ReactElement {
   const links = [
     {URL: '/', title: 'Home', logo: FaHome},
     {URL: '/new-game', title: 'New Game', logo: FaNewspaper},
-    {URL: '/about-us', title: 'About Us', logo: FaAddressBook},
-    {URL: '/FAQ', title: 'FAQ', logo: FaQuestionCircle},
   ];
 
   return (
@@ -41,17 +37,12 @@ function SidebarContent() {
             >
               <ListItemButton key={link.title} divider sx={{minHeight: 65}}>
                 <ListItemIcon>
-                  <link.logo style={{color: 'red'}} />
+                  <link.logo />
                 </ListItemIcon>
                 <ListItemText primary={link.title} />
               </ListItemButton>
             </NavLink>
           ))}
-        </div>
-        <div>
-          <a href={'/'} target="_blank" rel="noreferrer">
-            <button>Book Now</button>
-          </a>
         </div>
       </div>
     </List>
@@ -76,7 +67,6 @@ function Sidebar({isOpen, handleDrawerToggle}: SidebarProps) {
         display: {sm: 'block', md: 'none'},
         '& .MuiDrawer-paper': {boxSizing: 'border-box', width: 240},
       }}
-      PaperProps={{sx: {backgroundColor: 'orange'}}}
     >
       <SidebarContent />
     </Drawer>

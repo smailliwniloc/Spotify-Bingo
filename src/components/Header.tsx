@@ -134,14 +134,7 @@ const PageHeader = () => {
         <Box component="div" sx={styles.navMenu}>
           <NavLink to="/">SB</NavLink>
           <NavLink to="/new-game">New Game</NavLink>
-          <NavLink to="/about-us">About Us</NavLink>
-          <NavLink to="/FAQ">FAQ</NavLink>
         </Box>
-        {/* <Box component="div" sx={styles.finalSection}>
-          <a href={'/'} target="_blank" rel="noreferrer">
-            <button>Book Now</button>
-          </a>
-        </Box> */}
         <StyledBars onClick={handleDrawerToggle} />
         <Sidebar isOpen={sidebarOpen} handleDrawerToggle={handleDrawerToggle} />
       </Box>
