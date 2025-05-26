@@ -108,7 +108,9 @@ function Generator() {
     }
 
     idk();
-  }, [location]);
+  }, 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  [location]);
 
   const printCards = () => {
     const printableCards = window.frames[0];
