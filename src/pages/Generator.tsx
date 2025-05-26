@@ -14,6 +14,7 @@ function Generator() {
   const [playlists, setPlaylists] = React.useState<any[]>([]);
   const [selectedPlaylist, setSelectedPlaylist] = React.useState<string>('');
   const [numberOfCards, setNumberOfCards] = React.useState<number>(30);
+  const [title, setTitle] = React.useState<string>('Singo');
 
   // const getProfile = async (code: string) => {
   //   const codeVerifier = localStorage.getItem('code_verifier');
@@ -47,6 +48,10 @@ function Generator() {
 
   const onNumberChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setNumberOfCards(Number(event.target.value))
+  }
+
+  const onTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setTitle(event.target.value);
   }
 
   // const location = useLocation();
@@ -170,7 +175,8 @@ function Generator() {
           Step 4
         </Grid>
         <Grid item={true} xs={8}>
-          <TextField onChange={onNumberChange} type='number' value={numberOfCards} label="Number of Cards" sx={{marginTop: '8px'}}/>
+          <TextField onChange={onTitleChange} type='text' value={title} label="Title" sx={{margin: '8px'}}/>
+          <TextField onChange={onNumberChange} type='number' value={numberOfCards} label="Number of Cards" sx={{margin: '8px'}}/>
         </Grid>
         {!!token && !!selectedPlaylist ? <Grid item={true} xs={12}>
           Print the cards
@@ -178,7 +184,7 @@ function Generator() {
           <iframe
             title="Printable Cards"
             name="printable_cards"
-            src={`/printable-cards?token=${token}&playlistID=${selectedPlaylist}&amount=${numberOfCards}`}
+            src={`/printable-cards?token=${token}&playlistID=${selectedPlaylist}&amount=${numberOfCards}&title=${title}`}
             style={{height: '100vh', width: '100%'}}
           />
         </Grid> : null}

@@ -6,7 +6,7 @@ import {useLocation} from 'react-router-dom';
 function PrintableCards() {
   const [tracks, setTracks] = React.useState<any[]>([]);
   const [count, setCount] = React.useState<number | null>(null);
-  const title = 'Graduation Singo';
+  const [title, setTitle] = React.useState<string>('Singo');
 
   const location = useLocation();
 
@@ -55,7 +55,9 @@ function PrintableCards() {
     const token = URLParams.get('token');
     const playlistID = URLParams.get('playlistID');
     const amount = Number(URLParams.get('amount'));
+    const cardTitle = URLParams.get('title') || 'Singo';
     setCount(amount);
+    setTitle(cardTitle);
     fetchPlaylistTracks(token, playlistID);
   }, [location, fetchPlaylistTracks]);
 

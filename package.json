@@ -29,7 +29,10 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint --fix src",
-    "format": "prettier --write src"
+    "format": "prettier --write src",
+    "netlify:start": "netlify dev",
+    "netlify:build": "netlify build",
+    "netlify:status": "netlify status"
   },
   "eslintConfig": {
     "extends": [
